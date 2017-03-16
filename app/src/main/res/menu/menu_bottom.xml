@@ -5,12 +5,12 @@
         android:id="@+id/action_ongoing"
         android:enabled="true"
         android:title="@string/ongoing"
-        android:icon="@drawable/foot_icon"
-        app:showAsAction="ifRoom" />
+        android:icon="@drawable/autorenew"
+        app:showAsAction="always" />
     <item
         android:id="@+id/action_finished"
         android:enabled="true"
         android:title="@string/finished"
-        android:icon="@drawable/foot_icon"
-        app:showAsAction="ifRoom" />
+        android:icon="@drawable/chart_bar"
+        app:showAsAction="always" />
 </menu>
