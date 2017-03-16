@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bet-Clic est un site de paris en ligne sportifs vraiment génial.
+        Vous pouvez consultez tous les championnats, tous les matchs, toutes les équipes.
+        Vous avez le moyen de capitaliser sur votre connaissance sportive en pariant jusqu'à la dernière minute avant le match.
+
+        Site version 1.1.0" />
+</LinearLayout>
