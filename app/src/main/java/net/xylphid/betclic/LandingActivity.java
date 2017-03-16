@@ -2,8 +2,9 @@ package net.xylphid.betclic;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LandingActivity extends AppCompatActivity {
+public class LandingActivity extends RootActivity {
 
     private static final String publicKey = "q5oWRBgSvVUkPSCWGCNPnnSzaYwhwBHx";
     private static final String privateKey = "M4fHHjugSvdjxz3dSYD1LzZbvsjTVLqfTXhS8Ng0ij9TF5Wz9DNG6W0SO7ZrXT6PDiBJ22Mxk49jgXzPP1xB5dzScZD4IMjbPzXAirNugH9SGio59zClwASoI9JAgmqy";
@@ -40,8 +41,13 @@ public class LandingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_landing);
         ButterKnife.bind(this);
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.tbHeader);
+        if (null != toolbar) {
+            setSupportActionBar(toolbar);
+        }
     }
 
     public void onClickLogin(View view){
@@ -111,5 +117,11 @@ public class LandingActivity extends AppCompatActivity {
         }
 
         return credential;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.header, menu);
+        return true;
     }
 }

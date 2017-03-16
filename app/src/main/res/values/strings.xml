@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">Betclic</string>
-    <string name="football">football</string>
-    <string name="finished">Terminé</string>
-    <string name="ongoing">En cours</string>
-    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to menu -->
+    <string name="menu_about">A propos</string>
+    <string name="menu_signout">Déconnexion</string>
 
     <!-- Strings related to login -->
+    <string name="title_activity_login">Sign in</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password </string>
     <string name="action_sign_in">Sign in or register</string>
@@ -18,4 +19,9 @@
         completions."
     </string>
     <string name="action_login">Se connecter</string>
+
+
+    <string name="football">football</string>
+    <string name="finished">Terminé</string>
+    <string name="ongoing">En cours</string>
 </resources>
