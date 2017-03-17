@@ -1,18 +1,19 @@
 package net.xylphid.betclic;
 
 
+import net.xylphid.betclic.api.binder.AuthenticationBinder;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class LoginAPIService {
 
-    private static LoginService service;
+    private static AuthenticationBinder service;
 
 
-    public static LoginService get(){
+    public static AuthenticationBinder get(){
         if(service==null){
 
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -24,11 +25,11 @@ public class LoginAPIService {
             }
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://10.20.20.119:9000")
+                    .baseUrl("http://m2i.xylphid.net")
                     .client(httpClient.build())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
-            service = retrofit.create(LoginService.class);
+            service = retrofit.create(AuthenticationBinder.class);
         }
         return service;
     }
