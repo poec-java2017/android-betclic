@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.securepreferences.SecurePreferences;
+
 import net.xylphid.betclic.adapter.EventAdapter;
 
 import java.util.ArrayList;
@@ -120,9 +122,18 @@ public class EventsActivity extends AppCompatActivity {
                 startActivity(new Intent(this, AboutActivity.class));
                 return true;
             case R.id.menuSignout:
-                //action
+                logout();
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void logout(){
+        SharedPreferences sharedPref = new SecurePreferences(EventsActivity.this, "betclic", getString(R.string.preference_file_key));
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(getString(R.string.secure_public), "no-connexion");
+        editor.putString(getString(R.string.secure_private), "no-connexion");
+        editor.commit();
+        startActivity(new Intent(this, LandingActivity.class));
     }
 }
