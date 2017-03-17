@@ -1,16 +1,6 @@
 package model.api.request;
 
-/**
- * Created by formation on 16/03/17.
- */
-
-public class AuthenticationRequest {
-
-    public String apiKey;
-
-    public int ts;
-
-    public String ctrl = null;
+public class AuthenticationRequest extends BaseAuthenticationRequest {
 
     public String email;
 

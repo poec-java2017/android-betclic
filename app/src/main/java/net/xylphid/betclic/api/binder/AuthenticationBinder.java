@@ -1,5 +1,6 @@
 package net.xylphid.betclic.api.binder;
 
+import model.api.response.AuthenticationResponse;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -10,8 +11,7 @@ public interface AuthenticationBinder {
 
     @FormUrlEncoded
     @POST("/api/authenticate")
-    Call<String> login(
-//            @Body AuthenticationRequest credential
+    Call<AuthenticationResponse> login(
             @Field("email") String user,
             @Field("password") String password,
             @Field("apiKey") String apiKey,

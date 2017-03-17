@@ -19,6 +19,7 @@ import java.util.Date;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import model.api.request.AuthenticationRequest;
+import model.api.response.AuthenticationResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,13 +36,8 @@ public class LandingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_landing);
         ButterKnife.bind(this);
-
-//        Toolbar toolbar = (Toolbar)findViewById(R.id.tbHeader);
-//        if (null != toolbar) {
-//            setSupportActionBar(toolbar);
-//        }
     }
 
     public void onClickLogin(View view){
@@ -55,22 +51,21 @@ public class LandingActivity extends AppCompatActivity {
             Log.d("Email ----> ", email.getText().toString());
             Log.d("Password ----> ", password.getText().toString());
 
-            AuthenticationService.get().login(apiCredential.email,apiCredential.password, apiCredential.apiKey, apiCredential.ts, apiCredential.ctrl).enqueue(new Callback<String>() {
+            AuthenticationService.get().login(apiCredential.email,apiCredential.password, apiCredential.apiKey, apiCredential.ts, apiCredential.ctrl).enqueue(new Callback<AuthenticationResponse>() {
                 @Override
-                public void onResponse(Call<String> call, Response<String> response) {
+                public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
                     if (response.isSuccessful()) {
-                        Log.d("TEST", response.body());
+                        AuthenticationResponse authResponse = response.body();
+                        Log.d("TEST", authResponse.publicKey);
                         startActivity(new Intent(LandingActivity.this, EventActivity.class));
                     } else {
                         Log.d("error", "error api authenticate");
-                        startActivity(new Intent(LandingActivity.this, EventActivity.class));
                     }
                 }
 
                 @Override
-                public void onFailure(Call<String> call, Throwable t) {
+                public void onFailure(Call<AuthenticationResponse> call, Throwable t) {
                     Toast.makeText(LandingActivity.this, "Network fail, but why ?", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(LandingActivity.this, EventActivity.class));
                 }
             });
         }
