@@ -1,13 +1,18 @@
 package net.xylphid.betclic.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import model.Event;
+
+import net.xylphid.betclic.EventActivity;
+import net.xylphid.betclic.EventsActivity;
 import net.xylphid.betclic.R;
 
 import java.util.List;
@@ -38,6 +43,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         // TODO gérer la sélection de l'image correspondant au sport
         holder.tvTitle.setText(events.get(position).title);
         holder.tvDate.setText(events.get(position).date);
+
+        holder.llEventItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context, EventActivity.class));
+            }
+        });
     }
 
     @Override
@@ -46,6 +58,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
+        LinearLayout llEventItem;
         //ImageView ivImage;
         TextView tvTitle;
         TextView tvDate;
@@ -53,6 +66,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         ViewHolder(View view){
             super(view);
             //this.ivImage = (ImageView) view.findViewById(R.id.ivEventImage);
+            this.llEventItem = (LinearLayout)  view.findViewById(R.id.llEventItem);
             this.tvTitle = (TextView) view.findViewById(R.id.tvEventTitle);
             this.tvDate = (TextView) view.findViewById(R.id.tvEventDate);
         }
