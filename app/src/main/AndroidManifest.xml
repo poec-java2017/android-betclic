@@ -27,6 +27,7 @@
         <activity android:name=".EventsActivity" />
         <activity android:name=".RootActivity" />
         <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".BetActivity"></activity>
     </application>
 
 </manifest>
