@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import net.xylphid.betclic.adapter.BetAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 

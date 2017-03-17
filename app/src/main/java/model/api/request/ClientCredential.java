@@ -1,10 +1,10 @@
-package model;
+package model.api.request;
 
 /**
  * Created by formation on 16/03/17.
  */
 
-public class ApiClientCredential {
+public class ClientCredential {
 
     public String apiKey;
 

@@ -1,4 +1,4 @@
-package net.xylphid.betclic;
+package model;
 
 public class Event {
     public String sport;

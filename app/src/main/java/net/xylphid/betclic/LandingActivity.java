@@ -18,7 +18,7 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import model.ApiClientCredential;
+import model.api.request.ClientCredential;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,7 +47,7 @@ public class LandingActivity extends AppCompatActivity {
     public void onClickLogin(View view){
         if(email.getText().toString()!=null && password.getText().toString()!=null){
 
-            ApiClientCredential apiCredential = encrypt();
+            ClientCredential apiCredential = encrypt();
             apiCredential.email = email.getText().toString();
             apiCredential.password = password.getText().toString();
             Log.d("TEST", String.format("[%s] %d, %s", apiCredential.apiKey, apiCredential.ts, apiCredential.ctrl));
@@ -77,8 +77,8 @@ public class LandingActivity extends AppCompatActivity {
 
     }
 
-    public ApiClientCredential encrypt(){
-        ApiClientCredential credential = new ApiClientCredential();
+    public ClientCredential encrypt(){
+        ClientCredential credential = new ClientCredential();
         credential.apiKey = publicKey;
 
         Date now = new Date();
