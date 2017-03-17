@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import net.xylphid.betclic.adapter.BetAdapter;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,14 @@ public class EventActivity extends RootActivity {
         String publicKey = sharedPref.getString(getString(R.string.secure_public), null);
         String privateKey = sharedPref.getString(getString(R.string.secure_private), null);
         Log.d( "Event", String.format("%s %s", publicKey,privateKey) );
+
+        View doBet = findViewById(R.id.doBet);
+        doBet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         List<String> betList = new ArrayList<>();
         betList.add("BetChoice - QuoteChoice / Pseudo : SumPlayed");

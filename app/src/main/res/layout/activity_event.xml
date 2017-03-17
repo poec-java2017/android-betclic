@@ -29,13 +29,22 @@
         android:gravity="center"
         android:padding="7dp"
         android:textSize="25dp"
-        android:text="Lille - Strasbourg / L1"/>
+        android:text="Lille - Strasbourg / L1 \n 11 Septembre"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginBottom="7dp"
         android:background="@color/colorPrimary" />
+
+    <Button
+        android:id="@+id/doBet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp"
+        android:gravity="center"
+        android:text="Je paris moi aussi !"
+        android:textSize="18dp"
+        android:textColor="@android:color/holo_red_light"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvBetList"
