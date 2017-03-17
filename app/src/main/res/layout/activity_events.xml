@@ -10,7 +10,9 @@
         android:id="@+id/tbHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:background="@color/md_blue_grey_100"
+        android:titleTextColor="@color/md_white_1000"
         />
 
     <android.support.v7.widget.RecyclerView
