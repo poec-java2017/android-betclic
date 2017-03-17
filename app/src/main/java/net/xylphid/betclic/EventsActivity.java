@@ -134,11 +134,14 @@ public class EventsActivity extends AppCompatActivity {
     }
 
     public void logout(){
-        SharedPreferences sharedPref = new SecurePreferences(EventsActivity.this, "betclic", getString(R.string.preference_file_key));
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(getString(R.string.secure_public), "no-connexion");
-        editor.putString(getString(R.string.secure_private), "no-connexion");
-        editor.commit();
-        startActivity(new Intent(this, LandingActivity.class));
+        deleteFile(getString(R.string.preference_file_key));
+        Intent intent = new Intent(this, LandingActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        SharedPreferences sharedPref = new SecurePreferences(EventsActivity.this, "betclic", getString(R.string.preference_file_key));
+//        SharedPreferences.Editor editor = sharedPref.edit();
+//        editor.putString(getString(R.string.secure_public), "no-connexion");
+//        editor.putString(getString(R.string.secure_private), "no-connexion");
+//        editor.commit();
+        startActivity(intent);
     }
 }
