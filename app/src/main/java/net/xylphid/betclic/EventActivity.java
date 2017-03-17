@@ -2,6 +2,7 @@ package net.xylphid.betclic;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -56,7 +57,7 @@ public class EventActivity extends RootActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuAbout:
-                //action
+                startActivity(new Intent(this, AboutActivity.class));
                 return true;
             case R.id.menuSignout:
                 //action

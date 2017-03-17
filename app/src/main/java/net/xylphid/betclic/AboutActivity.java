@@ -1,15 +1,13 @@
-package model;
+package net.xylphid.betclic;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import net.xylphid.betclic.R;
-
-public class APropos extends AppCompatActivity {
+public class AboutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_a_propos);
+        setContentView(R.layout.activity_about);
     }
 }
