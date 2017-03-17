@@ -1,12 +1,16 @@
 package net.xylphid.betclic;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import net.xylphid.betclic.adapter.EventAdapter;
 
@@ -20,8 +24,12 @@ public class EventsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_events);
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.tbHeader);
+        if (null != toolbar) {
+            setSupportActionBar(toolbar);
+        }
 
 
         //Read securePreference
@@ -52,5 +60,24 @@ public class EventsActivity extends AppCompatActivity {
         RecyclerView listContainer = (RecyclerView) findViewById(R.id.events_container);
         listContainer.setLayoutManager(new LinearLayoutManager(this));
         listContainer.setAdapter(new EventAdapter(eventList));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.header, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menuAbout:
+                startActivity(new Intent(this, AboutActivity.class));
+                return true;
+            case R.id.menuSignout:
+                //action
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

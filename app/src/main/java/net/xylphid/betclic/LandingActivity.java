@@ -1,12 +1,10 @@
 package net.xylphid.betclic;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,9 +14,6 @@ import com.securepreferences.SecurePreferences;
 
 import net.xylphid.betclic.api.service.AuthenticationService;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
 import java.util.Date;
@@ -76,7 +71,7 @@ public class LandingActivity extends AppCompatActivity {
 
 
                         Log.d("TEST", authResponse.publicKey);
-                        startActivity(new Intent(LandingActivity.this, EventActivity.class));
+                        startActivity(new Intent(LandingActivity.this, EventsActivity.class));
                     } else {
                         Log.d("error", "error api authenticate");
                     }
