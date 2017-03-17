@@ -11,7 +11,7 @@ public interface AuthenticationBinder {
     @FormUrlEncoded
     @POST("/api/authenticate")
     Call<String> login(
-//            @Body ClientCredential credential
+//            @Body AuthenticationRequest credential
             @Field("email") String user,
             @Field("password") String password,
             @Field("apiKey") String apiKey,

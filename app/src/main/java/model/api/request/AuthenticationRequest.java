@@ -4,7 +4,7 @@ package model.api.request;
  * Created by formation on 16/03/17.
  */
 
-public class ClientCredential {
+public class AuthenticationRequest {
 
     public String apiKey;
 
