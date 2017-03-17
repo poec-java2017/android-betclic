@@ -24,4 +24,7 @@
     <string name="football">football</string>
     <string name="finished">Terminé</string>
     <string name="ongoing">En cours</string>
+    <string name="preference_file_key">userCredentials</string>
+    <string name="secure_public">publicKey</string>
+    <string name="secure_private">privateKey</string>
 </resources>

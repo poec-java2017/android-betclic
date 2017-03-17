@@ -1,6 +1,8 @@
 package net.xylphid.betclic;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,8 +12,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.securepreferences.SecurePreferences;
+
 import net.xylphid.betclic.api.service.AuthenticationService;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
 import java.util.Date;
@@ -56,6 +63,18 @@ public class LandingActivity extends AppCompatActivity {
                 public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
                     if (response.isSuccessful()) {
                         AuthenticationResponse authResponse = response.body();
+
+                        //Register to securePreference.
+                        //SharedPreferences sharedPref = LandingActivity.this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+                        SharedPreferences sharedPref = new SecurePreferences(LandingActivity.this, "betclic", getString(R.string.preference_file_key));
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putString(getString(R.string.secure_public), authResponse.publicKey);
+                        editor.putString(getString(R.string.secure_private), authResponse.privateKey);
+                        editor.commit();
+
+                        //Read securePreference
+
+
                         Log.d("TEST", authResponse.publicKey);
                         startActivity(new Intent(LandingActivity.this, EventActivity.class));
                     } else {
@@ -109,9 +128,5 @@ public class LandingActivity extends AppCompatActivity {
         return credential;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.header, menu);
-        return true;
-    }
+
 }

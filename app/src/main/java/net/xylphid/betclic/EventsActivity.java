@@ -1,9 +1,12 @@
 package net.xylphid.betclic;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import net.xylphid.betclic.adapter.EventAdapter;
 
@@ -19,6 +22,14 @@ public class EventsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_events);
+
+
+        //Read securePreference
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        String publicKey = sharedPref.getString(getString(R.string.secure_public), null);
+        String privateKey = sharedPref.getString(getString(R.string.secure_private), null);
+        Log.d( "Event", String.format("%s %s", publicKey,privateKey) );
+
 
         List<Event> eventList = new ArrayList<>();
 

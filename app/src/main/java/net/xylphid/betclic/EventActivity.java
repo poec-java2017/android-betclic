@@ -1,9 +1,12 @@
 package net.xylphid.betclic;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -23,6 +26,13 @@ public class EventActivity extends RootActivity {
         if (null != toolbar) {
             setSupportActionBar(toolbar);
         }
+
+
+        //Read securePreference
+        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        String publicKey = sharedPref.getString(getString(R.string.secure_public), null);
+        String privateKey = sharedPref.getString(getString(R.string.secure_private), null);
+        Log.d( "Event", String.format("%s %s", publicKey,privateKey) );
 
         List<String> betList = new ArrayList<>();
         betList.add("BetChoice - QuoteChoice / Pseudo : SumPlayed");
