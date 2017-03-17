@@ -1,6 +1,7 @@
-package net.xylphid.betclic;
+package net.xylphid.betclic.api.service;
 
 
+import net.xylphid.betclic.BuildConfig;
 import net.xylphid.betclic.api.binder.AuthenticationBinder;
 
 import okhttp3.OkHttpClient;
@@ -8,7 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class LoginAPIService {
+public class AuthenticationService {
 
     private static AuthenticationBinder service;
 

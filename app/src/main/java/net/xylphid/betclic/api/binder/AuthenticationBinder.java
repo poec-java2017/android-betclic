@@ -1,4 +1,4 @@
-package net.xylphid.betclic;
+package net.xylphid.betclic.api.binder;
 
 import model.ApiClientCredential;
 import retrofit2.Call;
@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Field;
 
 
-public interface LoginService {
+public interface AuthenticationBinder {
 
     @FormUrlEncoded
     @POST("/api/authenticate")

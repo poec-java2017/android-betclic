@@ -2,7 +2,7 @@ package net.xylphid.betclic;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -10,9 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import net.xylphid.betclic.api.service.AuthenticationService;
+
 import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -22,32 +23,25 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LandingActivity extends RootActivity {
+public class LandingActivity extends AppCompatActivity {
 
-    private static final String publicKey = "q5oWRBgSvVUkPSCWGCNPnnSzaYwhwBHx";
-    private static final String privateKey = "M4fHHjugSvdjxz3dSYD1LzZbvsjTVLqfTXhS8Ng0ij9TF5Wz9DNG6W0SO7ZrXT6PDiBJ22Mxk49jgXzPP1xB5dzScZD4IMjbPzXAirNugH9SGio59zClwASoI9JAgmqy";
-//    MessageDigest md = MessageDigest.getInstance("SHA");
+    private static final String publicKey = "K2ZaSYczA13ppgXetAofyBFk0oJKB7o5";
+    private static final String privateKey = "POXTy7dit0WFQ5YtHMEqocsS9xagfoYbFgvFGRXWy3QY1diohZCFu4S1Th8vGbl3rtLB8874t1E5NI27QucZm3MeZS73RmCwv9dH3rS0af63DU2LOzBxxviUDEbeHjTi";
 
-    @BindView(R.id.email)
-    EditText email;
-    @BindView(R.id.password)
-    EditText password;
-    @BindView(R.id.login)
-    Button login;
-
-    public LandingActivity() throws NoSuchAlgorithmException {
-    }
+    @BindView(R.id.email) EditText email;
+    @BindView(R.id.password) EditText password;
+    @BindView(R.id.login) Button login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_landing);
+        setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.tbHeader);
-        if (null != toolbar) {
-            setSupportActionBar(toolbar);
-        }
+//        Toolbar toolbar = (Toolbar)findViewById(R.id.tbHeader);
+//        if (null != toolbar) {
+//            setSupportActionBar(toolbar);
+//        }
     }
 
     public void onClickLogin(View view){
@@ -61,21 +55,22 @@ public class LandingActivity extends RootActivity {
             Log.d("Email ----> ", email.getText().toString());
             Log.d("Password ----> ", password.getText().toString());
 
-            LoginAPIService.get().login(apiCredential.email,apiCredential.password, apiCredential.apiKey, apiCredential.ts, apiCredential.ctrl).enqueue(new Callback<String>() {
-//            LoginAPIService.get().login(email.getText().toString(),password.getText().toString(), apiCredential.apiKey, apiCredential.ts, apiCredential.ctrl).enqueue(new Callback<String>() {
-//            LoginAPIService.get().login(apiCredential).enqueue(new Callback<String>() {
+            AuthenticationService.get().login(apiCredential.email,apiCredential.password, apiCredential.apiKey, apiCredential.ts, apiCredential.ctrl).enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
                     if (response.isSuccessful()) {
                         Log.d("TEST", response.body());
+                        startActivity(new Intent(LandingActivity.this, EventActivity.class));
                     } else {
                         Log.d("error", "error api authenticate");
+                        startActivity(new Intent(LandingActivity.this, EventActivity.class));
                     }
                 }
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
                     Toast.makeText(LandingActivity.this, "Network fail, but why ?", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(LandingActivity.this, EventActivity.class));
                 }
             });
         }
