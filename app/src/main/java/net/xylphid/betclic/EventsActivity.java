@@ -134,14 +134,15 @@ public class EventsActivity extends AppCompatActivity {
     }
 
     public void logout(){
+        // Clear credentials
         deleteFile(getString(R.string.preference_file_key));
+
+        // Create intent and remove previous tasks (navigation history)
         Intent intent = new Intent(this, LandingActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        SharedPreferences sharedPref = new SecurePreferences(EventsActivity.this, "betclic", getString(R.string.preference_file_key));
-//        SharedPreferences.Editor editor = sharedPref.edit();
-//        editor.putString(getString(R.string.secure_public), "no-connexion");
-//        editor.putString(getString(R.string.secure_private), "no-connexion");
-//        editor.commit();
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        // Return to signin screen
         startActivity(intent);
     }
 }

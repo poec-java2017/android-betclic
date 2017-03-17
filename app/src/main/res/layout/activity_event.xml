@@ -51,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="7dp"
         android:gravity="center"
+        android:onClick="displayBet"
         android:text="Je paris moi aussi !"
         android:textSize="18dp"
         android:textColor="@android:color/holo_red_light" />

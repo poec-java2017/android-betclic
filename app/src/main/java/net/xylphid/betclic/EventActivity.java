@@ -1,14 +1,16 @@
 package net.xylphid.betclic;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.Toast;
 
 import net.xylphid.betclic.adapter.BetAdapter;
+import net.xylphid.betclic.utils.IntentUtils;
+
 import android.view.View;
 
 import java.util.ArrayList;
@@ -47,5 +49,9 @@ public class EventActivity extends RootActivity {
         RecyclerView rvBetList = (RecyclerView) findViewById(R.id.rvBetList);
         rvBetList.setLayoutManager(new LinearLayoutManager(this));
         rvBetList.setAdapter(new BetAdapter(betList));
+    }
+
+    public void displayBet(View view) {
+        startActivity(new Intent(this, BetActivity.class));
     }
 }
