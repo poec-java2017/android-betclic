@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Toast;
 
 import net.xylphid.betclic.adapter.BetAdapter;
 
@@ -19,6 +20,7 @@ public class EventActivity extends RootActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
 
+        String id = getIntent().getExtras().getString(IntentUtils.ID_EVENT_KEY);
 
         //Read securePreference
         SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);

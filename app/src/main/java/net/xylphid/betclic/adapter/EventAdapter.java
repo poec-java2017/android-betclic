@@ -2,17 +2,22 @@ package net.xylphid.betclic.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.IdRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import model.Event;
 
 import net.xylphid.betclic.EventActivity;
 import net.xylphid.betclic.EventsActivity;
+import net.xylphid.betclic.IntentUtils;
+import net.xylphid.betclic.MyClickListener;
 import net.xylphid.betclic.R;
 
 import java.util.List;
@@ -44,10 +49,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         holder.tvTitle.setText(events.get(position).title);
         holder.tvDate.setText(events.get(position).date);
 
-        holder.llEventItem.setOnClickListener(new View.OnClickListener() {
+        holder.llEventItem.setOnClickListener(new MyClickListener(events.get(position).id) {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, EventActivity.class));
+                Intent intent = new Intent(context, EventActivity.class);
+                intent.putExtra(IntentUtils.ID_EVENT_KEY, id);
+                context.startActivity(intent);
             }
         });
     }

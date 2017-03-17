@@ -48,6 +48,7 @@ public class EventsActivity extends AppCompatActivity {
 
         Event event1 = new Event();
         event1.date = "25/02/2016";
+        event1.id = "event1";
         event1.title = "Football/Ligue 1/PSG - Bordeaux";
         eventList.add(event1);
 
@@ -82,11 +83,13 @@ public class EventsActivity extends AppCompatActivity {
 
         Event event1 = new Event();
         event1.date = "25/02/2016";
+        event1.id = "event1";
         event1.title = "Football/Ligue 1/PSG - Bordeaux";
         eventList.add(event1);
 
         Event event2 = new Event();
         event2.date = "12/05/2016";
+        event2.id = "event2";
         event2.title = "Football/Ligue 1/OL - VAFC";
         eventList.add(event2);
 
@@ -98,11 +101,13 @@ public class EventsActivity extends AppCompatActivity {
 
         Event event1 = new Event();
         event1.date = "25/02/2016";
+        event1.id = "event1";
         event1.title = "Football/Ligue 1/PSG - Bordeaux";
         eventList.add(event1);
 
         Event event3 = new Event();
         event3.date = "17/05/2016";
+        event3.id = "event3";
         event3.title = "Football/Ligue 1/Bordeaux - OL";
         eventList.add(event3);
 
