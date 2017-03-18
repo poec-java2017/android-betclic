@@ -1,5 +1,7 @@
 package net.xylphid.betclic;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 import com.securepreferences.SecurePreferences;
 
 import net.xylphid.betclic.api.service.AuthenticationService;
+import net.xylphid.betclic.utils.AuthenticationUtils;
 
 import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
@@ -40,6 +43,13 @@ public class LandingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
         ButterKnife.bind(this);
+
+        if (AuthenticationUtils.isConnected(this)) {
+            Intent intent = new Intent(this, EventsActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
     }
 
     public void onClickLogin(View view){
